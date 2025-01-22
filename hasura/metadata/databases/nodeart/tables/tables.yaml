@@ -1,0 +1,5 @@
+- "!include nodeart_authors.yaml"
+- "!include nodeart_collections.yaml"
+- "!include nodeart_images.yaml"
+- "!include nodeart_tags.yaml"
+- "!include nodeart_tags_images.yaml"

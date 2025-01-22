@@ -1,0 +1,13 @@
+actions:
+  - name: fileUpload
+    definition:
+      kind: synchronous
+      handler: http://host.docker.internal:8000/api/upload/imgur
+    permissions:
+      - role: author
+custom_types:
+  enums: []
+  input_objects: []
+  objects:
+    - name: FileOutput
+  scalars: []

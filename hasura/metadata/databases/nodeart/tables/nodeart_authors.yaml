@@ -1,0 +1,30 @@
+table:
+  name: authors
+  schema: nodeart
+select_permissions:
+  - role: author
+    permission:
+      columns:
+        - email
+        - is_admin
+        - uid
+      filter: {}
+    comment: ""
+  - role: public
+    permission:
+      columns:
+        - email
+        - uid
+      filter: {}
+    comment: ""
+update_permissions:
+  - role: author
+    permission:
+      columns:
+        - email
+        - password
+      filter:
+        uid:
+          _eq: X-Hasura-User-Id
+      check: null
+    comment: ""
