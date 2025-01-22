@@ -1,5 +1,3 @@
-### How to use
-
 ## Setup environment
 
 Create a `.env` file in the root directory with the `.env.example` content and modify on your own
