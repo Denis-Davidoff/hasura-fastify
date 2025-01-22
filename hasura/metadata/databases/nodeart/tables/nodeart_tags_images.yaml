@@ -1,0 +1,63 @@
+table:
+  name: tags_images
+  schema: nodeart
+insert_permissions:
+  - role: author
+    permission:
+      check:
+        _exists:
+          _table:
+            name: images
+            schema: nodeart
+          _where:
+            author_uid:
+              _eq: X-Hasura-User-Id
+      set:
+        image_id: ""
+      columns:
+        - image_id
+        - tag
+    comment: ""
+select_permissions:
+  - role: author
+    permission:
+      columns:
+        - image_id
+        - tag
+      filter: {}
+    comment: ""
+  - role: public
+    permission:
+      columns:
+        - image_id
+        - tag
+      filter: {}
+    comment: ""
+update_permissions:
+  - role: author
+    permission:
+      columns:
+        - image_id
+        - tag
+      filter:
+        _exists:
+          _table:
+            name: images
+            schema: nodeart
+          _where:
+            author_uid:
+              _eq: X-Hasura-User-Id
+      check: null
+    comment: ""
+delete_permissions:
+  - role: author
+    permission:
+      filter:
+        _exists:
+          _table:
+            name: images
+            schema: nodeart
+          _where:
+            author_uid:
+              _eq: X-Hasura-User-Id
+    comment: ""

@@ -1,0 +1,16 @@
+table:
+  name: tags
+  schema: nodeart
+select_permissions:
+  - role: author
+    permission:
+      columns:
+        - tag
+      filter: {}
+    comment: ""
+  - role: public
+    permission:
+      columns:
+        - tag
+      filter: {}
+    comment: ""

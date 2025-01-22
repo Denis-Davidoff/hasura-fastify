@@ -1,0 +1,13 @@
+type Mutation {
+  fileUpload(
+    base64: String!
+    userId: String!
+  ): FileOutput!
+}
+
+type FileOutput {
+  url: String!
+  mimetype: String!
+  size: Int!
+}
+

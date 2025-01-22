@@ -1,0 +1,66 @@
+table:
+  name: images
+  schema: nodeart
+object_relationships:
+  - name: collection
+    using:
+      foreign_key_constraint_on: collection_id
+insert_permissions:
+  - role: author
+    permission:
+      check:
+        _exists:
+          _table:
+            name: authors
+            schema: nodeart
+          _where:
+            uid:
+              _eq: X-Hasura-User-Id
+      columns:
+        - collection_id
+        - url
+    comment: ""
+select_permissions:
+  - role: author
+    permission:
+      columns:
+        - author_uid
+        - collection_id
+        - created_at
+        - id
+        - url
+      filter: {}
+    comment: ""
+  - role: public
+    permission:
+      columns:
+        - author_uid
+        - collection_id
+        - created_at
+        - id
+        - url
+      filter: {}
+    comment: ""
+update_permissions:
+  - role: author
+    permission:
+      columns:
+        - collection_id
+        - url
+      filter:
+        _exists:
+          _table:
+            name: authors
+            schema: nodeart
+          _where:
+            uid:
+              _eq: X-Hasura-User-Id
+      check: null
+    comment: ""
+delete_permissions:
+  - role: author
+    permission:
+      filter:
+        author_uid:
+          _eq: X-Hasura-User-Id
+    comment: ""
